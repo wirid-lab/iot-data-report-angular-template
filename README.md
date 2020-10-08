@@ -11,7 +11,7 @@ npm install
 #### Configuration
 
 - In the `environment` folder set your `WIRID_LAB_TOKEN` by the token created in your IoT Platform
-- In The `app.component.ts` you will find the *getDataByNodeId(<apiName>)* function,  replace the `<apiName>` by your device API name
+- In the `app.component.ts` you will find the *getDataByNodeId(apiName)* function,  replace the `<apiName>` by your device API name
 - Inside  *changeRangeData()*  replace the `selectData` variable to filter values
 
 
@@ -21,9 +21,10 @@ npm start
 ```
 
 #### Docker
-If you want to deploy your application by using containers type:
+If you want to deploy your application by using containers, just  type:
 
 ```sh
 docker-compose up
 ```
 Access in your browser http://localhost:4200
+
