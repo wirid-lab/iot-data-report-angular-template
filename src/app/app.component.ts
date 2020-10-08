@@ -15,7 +15,7 @@ const moment = require('moment');
 export class AppComponent implements OnInit {
     name = 'Angular';
 
-    private myChart2: any = null;
+    private myChart: any = null;
     public totalData = [];
     public start: Date = new Date(
         new Date().getFullYear(),
@@ -80,9 +80,6 @@ export class AppComponent implements OnInit {
         this.getNodeData()
     }
 
-
-
-
     getNodeData(dates?: any) {
         if (dates) {
             this.start = dates.value[0];
@@ -92,14 +89,13 @@ export class AppComponent implements OnInit {
             this.totalData = data;
             this.changeRangeData()
         }, err => alert("Error getting data"))
-
-
     }
 
 
     fromJsonToDataChart(data: any[], queryName: string, colorHexa?: string): { axisData: object, seriesData: object } {
-        // Check For Dates
+       
         let months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
+        // Extract all dates (UTC0)
         let tempDataAxisX = data.map(x => x["created"])
         for (let index = 0; index < tempDataAxisX.length; index++) {
             let element = tempDataAxisX[index];
@@ -131,7 +127,7 @@ export class AppComponent implements OnInit {
             // boundaryGap: false,
             data: tempDataAxisX
         }
-
+        // Ectract values of variable queryName
         let tempDataValues = data.map(x => x[queryName])
         let seriesData = {
             name: queryName,
@@ -139,10 +135,7 @@ export class AppComponent implements OnInit {
             data: tempDataValues,
             smooth: true
         }
-
         return { axisData: axisData, seriesData: seriesData }
-
-
     }
 
     changeRangeData() {
@@ -174,19 +167,12 @@ export class AppComponent implements OnInit {
         this.optionHistory.series.push(chartDataHum.seriesData)
         this.optionHistory.legend.data.push(selectData)
 
-
-
         this.loadChart();
-
-
     }
 
     loadChart() {
         // Set Chart in html
-        this.myChart2 = echarts.init((document.getElementById('history-graph')) as any);
-        this.myChart2.setOption(this.optionHistory);
+        this.myChart = echarts.init((document.getElementById('history-graph')) as any);
+        this.myChart.setOption(this.optionHistory);
     }
-
-
-
 }
