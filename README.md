@@ -36,3 +36,10 @@ Open your browser on http://localhost:4200
 - Bootstrap v4.0
 - Moment.js
 - [Apache Echarts](https://echarts.apache.org/) 
+
+
+
+
+### Screenshot
+
+<img src="/src/assets/Demo-pic.png" alt="Demo">
