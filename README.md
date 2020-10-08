@@ -10,7 +10,7 @@ npm install
 
 #### Configuration
 
-- In the `environment` folder set your `WIRID_LAB_TOKEN` by the token created in your IoT Platform
+- In the `environment` folder set your `WIRID_LAB_TOKEN` by the token created in https://wirid-lab.umng.edu.co/#/home/my-iot/tokens
 - In the `app.component.ts` you will find the *getDataByNodeId(apiName)* function,  replace the `<apiName>` by your device API name
     - Inside  *changeRangeData()*  replace the `selectData` variable to filter values
 
