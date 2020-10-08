@@ -40,6 +40,8 @@ Open your browser on http://localhost:4200
 
 
 
-### Screenshot
+### Screenshot And Demo
+
+Demo: https://stackblitz.com/github/wirid-lab/iot-data-report-angular-template
 
 <img src="/src/assets/Demo-pic.png" alt="Demo">
