@@ -147,26 +147,26 @@ export class AppComponent implements OnInit {
         let startDayMoment = moment(this.start).startOf('day');
         let endDayMoment = moment(this.end).endOf('day');
 
-        let selectVariable= ''
-        let valueVariable =[]
-        let chartDataTemp = []
+        let selectVariable= '';
+        let valueVariable;
+        let chartDataTemp;
 
         // Show Temperature
-        selectVariable= 'temperature'
-        valueVariable = this.totalData.filter(x => (x[selectVariable] != null || x[selectVariable] != undefined) && moment(x.created).isBetween(startDayMoment, endDayMoment))
-        chartDataTemp = this.fromJsonToDataChart(valueVariable, selectVariable, '#e5323e')
-        this.optionHistory.xAxis.push(chartDataTemp.axisData)
-        this.optionHistory.series.push(chartDataTemp.seriesData)
-        this.optionHistory.legend.data.push(selectVariable)
+        selectVariable= 'temperature';
+        valueVariable = this.totalData.filter(x => (x[selectVariable] != null || x[selectVariable] != undefined) && moment(x.created).isBetween(startDayMoment, endDayMoment));
+        chartDataTemp = this.fromJsonToDataChart(valueVariable, selectVariable, '#e5323e');
+        this.optionHistory.xAxis.push(chartDataTemp.axisData);
+        this.optionHistory.series.push(chartDataTemp.seriesData);
+        this.optionHistory.legend.data.push(selectVariable);
 
 
         // Show Humidity
-        selectVariable= 'humidity'
-        valueVariable = this.totalData.filter(x => (x[selectVariable] != null || x[selectVariable] != undefined) && moment(x.created).isBetween(startDayMoment, endDayMoment))
-        chartDataTemp = this.fromJsonToDataChart(valueVariable, selectVariable, '#003366')
-        this.optionHistory.xAxis.push(chartDataTemp.axisData)
-        this.optionHistory.series.push(chartDataTemp.seriesData)
-        this.optionHistory.legend.data.push(selectVariable)
+        selectVariable= 'humidity';
+        valueVariable = this.totalData.filter(x => (x[selectVariable] != null || x[selectVariable] != undefined) && moment(x.created).isBetween(startDayMoment, endDayMoment));
+        chartDataTemp = this.fromJsonToDataChart(valueVariable, selectVariable, '#003366');
+        this.optionHistory.xAxis.push(chartDataTemp.axisData);
+        this.optionHistory.series.push(chartDataTemp.seriesData);
+        this.optionHistory.legend.data.push(selectVariable);
       
 
 
