@@ -6,7 +6,7 @@ import { timer } from 'rxjs';
 import { take } from 'rxjs/operators';
 declare var require: any
 const moment = require('moment');
-
+const NODE_API_NAME = 'demo-wirid-lab-iot-data' 
 @Component({
     selector: 'my-app',
     templateUrl: './app.component.html',
@@ -85,7 +85,7 @@ export class AppComponent implements OnInit {
             this.start = dates.value[0];
             this.end = dates.value[1];
         }
-        this._nodeServices.getDataByNodeId('demo-wirid-lab-iot-data').pipe(take(1)).subscribe(data => {
+        this._nodeServices.getDataByNodeId(NODE_API_NAME).pipe(take(1)).subscribe(data => {
             this.totalData = data;
             this.changeRangeData()
         }, err => alert("Error getting data"))
@@ -147,25 +147,28 @@ export class AppComponent implements OnInit {
         let startDayMoment = moment(this.start).startOf('day');
         let endDayMoment = moment(this.end).endOf('day');
 
-        let selectData= ''
+        let selectVariable= ''
+        let valueVariable =[]
+        let chartDataTemp = []
 
-        // Show Temperatures
-        selectData= 'temperature'
-        let temperatureData = this.totalData.filter(x => (x[selectData] != null || x[selectData] != undefined) && moment(x.created).isBetween(startDayMoment, endDayMoment))
-        let chartDataTemp = this.fromJsonToDataChart(temperatureData, selectData, '#e5323e')
+        // Show Temperature
+        selectVariable= 'temperature'
+        valueVariable = this.totalData.filter(x => (x[selectVariable] != null || x[selectVariable] != undefined) && moment(x.created).isBetween(startDayMoment, endDayMoment))
+        chartDataTemp = this.fromJsonToDataChart(valueVariable, selectVariable, '#e5323e')
         this.optionHistory.xAxis.push(chartDataTemp.axisData)
         this.optionHistory.series.push(chartDataTemp.seriesData)
-        this.optionHistory.legend.data.push(selectData)
-
+        this.optionHistory.legend.data.push(selectVariable)
 
 
         // Show Humidity
-        selectData= 'humidity'
-        let humidityData = this.totalData.filter(x => (x[selectData] != null || x[selectData] != undefined) && moment(x.created).isBetween(startDayMoment, endDayMoment))
-        let chartDataHum = this.fromJsonToDataChart(humidityData, selectData, '#003366')
-        this.optionHistory.xAxis.push(chartDataHum.axisData)
-        this.optionHistory.series.push(chartDataHum.seriesData)
-        this.optionHistory.legend.data.push(selectData)
+        selectVariable= 'humidity'
+        valueVariable = this.totalData.filter(x => (x[selectVariable] != null || x[selectVariable] != undefined) && moment(x.created).isBetween(startDayMoment, endDayMoment))
+        chartDataTemp = this.fromJsonToDataChart(valueVariable, selectVariable, '#003366')
+        this.optionHistory.xAxis.push(chartDataTemp.axisData)
+        this.optionHistory.series.push(chartDataTemp.seriesData)
+        this.optionHistory.legend.data.push(selectVariable)
+      
+
 
         this.loadChart();
     }
