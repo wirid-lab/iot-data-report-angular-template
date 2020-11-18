@@ -11,8 +11,8 @@ npm install
 #### Configuration
 
 - In the `environment` folder set your `WIRID_LAB_TOKEN` by the token created in https://wirid-lab.umng.edu.co/#/home/my-iot/tokens
-- In the `app.component.ts` you will find the *getDataByNodeId(apiName)* function,  replace the `<apiName>` by your device API name
-    - Inside  *changeRangeData()*  replace the `selectData` variable to filter values
+- In the `app.component.ts` set the 'NODE_API_NAME' variable by your device API name
+    - Inside  *changeRangeData()*  replace the `selectVariable` variable to filter your value
 
 
 ####  Run 
@@ -22,7 +22,7 @@ npm start
 Open your browser on http://localhost:4200
 
 #### Docker
-If you want to deploy your application by using containers, just  type:
+If you want to deploy your application for production by using containers, just  type:
 
 ```sh
 docker-compose up
